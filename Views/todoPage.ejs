@@ -1,5 +1,6 @@
 <html>
     <head>
+        
 
 
     </head>
@@ -8,11 +9,21 @@
         <h1>
             TODO - APP
         </h1>
+        <ul>
+            <% for(let val of listOfTask ){ %>
+                <li>
+                    <%= val.description %>
+                    <%= val.dueDate %>
+                </li>
+                
+            <% } %>
+
+        </ul>
 
         <!--   Form   -->
         <form action="/create-task" method="POST">
             <input type="text" name="task" placeholder="Description....." required>
-            <input type="date" name="due-date">
+            <input type="date" name="dDate">
             <input type="submit" >
 
         </form>
