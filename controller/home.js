@@ -6,7 +6,6 @@ module.exports.home= function(req,res){
             console.log('error in fetching tasks ',err);
             return;
         }
-        console.log('taskList>>>>> ',taskList);
         return res.render('todoPage',{
             listOfTask: taskList
         });
@@ -27,10 +26,19 @@ module.exports.createTask = function(req,res){
                 return;
             }
 
-            console.log('newTask>>>> ',newTask);
-
         });
 
     }
     return res.redirect('back');
+}
+
+module.exports.delete = function(req,res){
+    Task.findByIdAndDelete(req.query.Id,function(err){
+        if(err){
+            console.log('error in creating new task ',err);
+            return;
+        }
+    });
+    return res.redirect('back');
+
 }
